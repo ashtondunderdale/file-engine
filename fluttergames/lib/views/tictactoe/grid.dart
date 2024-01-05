@@ -21,7 +21,7 @@ class Grid extends StatelessWidget {
           ),
           itemCount: tileindex.length,
           itemBuilder: (context, index) {
-            return const Tile();
+            return Tile(index: tileindex[index], symbol: "Empty",);
           },
         ),
       ),
