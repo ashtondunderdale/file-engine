@@ -4,8 +4,8 @@ import 'package:fluttergames/views/tictactoe/tile.dart';
 class Grid extends StatelessWidget {
   Grid({Key? key});
 
-  final List<int> tileindex = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
+  final List<int> tileindex = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+  
   @override
   Widget build(BuildContext context) {
     return Center(

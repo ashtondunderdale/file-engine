@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttergames/views/tictactoe/tictactoe.dart';
 
 class Tile extends StatefulWidget {
   Tile({super.key, required this.index, required this.symbol});
@@ -13,6 +14,9 @@ class Tile extends StatefulWidget {
 class _TileState extends State<Tile> {
   @override
   Widget build(BuildContext context) {
+
+    TicTacToe.tileList.add(widget);
+
     return GestureDetector(
       onTap: () {
         if (widget.symbol == "Empty"){
@@ -21,8 +25,11 @@ class _TileState extends State<Tile> {
           });
         }
 
-        if (_checkIfThreeInARow){
-
+        if (TicTacToe.isThreeInARow("Cross")){
+          print("CROSS WIN");
+        }
+        if (TicTacToe.isThreeInARow("Circle")){
+          print("CIRCLE WIN");
         }
       },
       child: Container(
