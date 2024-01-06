@@ -1,17 +1,17 @@
 import 'package:google_books_api/google_books_api.dart';
 
-void getBooks() async {
+Future<List<Book>> getBooks() async {
   final List<Book> books = await const GoogleBooksApi().searchBooks(
-  'philosophy', 
-  maxResults: 20,
-  printType: PrintType.books,
-  orderBy: OrderBy.relevance,
-);
+    'philosophy', 
+    maxResults: 5,
+    printType: PrintType.books,
+    orderBy: OrderBy.relevance,
+  );
 
-  for (Book book in books){
+  for (var book in books){
     print(book.volumeInfo.title);
-
   }
 
+  return books;
 }
 
