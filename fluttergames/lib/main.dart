@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttergames/views/home.dart';
+
+import 'views/home.dart';
 
 void main() => runApp(const App());
 
@@ -10,7 +11,6 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Games',
       home: Home(),
     );
   }
