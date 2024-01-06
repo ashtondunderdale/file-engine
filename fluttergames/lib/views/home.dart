@@ -25,15 +25,20 @@ class Home extends StatelessWidget {
           else if (snapshot.hasData) 
           {
             List<BookItem> bookItemList = snapshot.data!
-                .map((book) => BookItem(title: book.volumeInfo.title))
-                .toList();
-
-            return ListView.builder(
-              itemCount: bookItemList.length,
-              itemBuilder: (context, index) 
-              {
-                return bookItemList[index]; 
-              },
+              .map((book) => BookItem(
+                imageLinks: book.volumeInfo.imageLinks
+                )
+              ).toList();
+            return SizedBox(
+              height: 280,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: bookItemList.length,
+                itemBuilder: (context, index) 
+                {
+                  return bookItemList[index]; 
+                },
+              ),
             );
           } else 
           {
