@@ -3,7 +3,7 @@ import 'package:google_books_api/google_books_api.dart';
 Future<List<Book>> getBooks() async {
   final List<Book> books = await const GoogleBooksApi().searchBooks(
     'philosophy', 
-    maxResults: 1,
+    maxResults: 40,
     printType: PrintType.books,
     orderBy: OrderBy.relevance,
   );
