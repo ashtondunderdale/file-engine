@@ -7,14 +7,15 @@ import '../widgets/discover/search_bar.dart';
 import '../widgets/nav_panel/nav_panel.dart';
 
 class Discover extends StatefulWidget {
-  Discover({super.key});
+  const Discover({super.key});
 
   @override
   _DiscoverState createState() => _DiscoverState();
 }
 
 class _DiscoverState extends State<Discover> {
-  List<String> categories = [
+
+  List<String> defaultCategories = [
     "Philosophy", "Science", "Psychology", "Fiction", "Thriller", "Mystery", 
     "Romance", "History", "Fantasy"
   ];
@@ -52,11 +53,7 @@ class _DiscoverState extends State<Discover> {
           Expanded(
             child: SingleChildScrollView(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  for (String category in filteredCategories.isNotEmpty ? filteredCategories: categories) 
-                    BookList(category: category),
-                ],
+                children: buildBookLists(), 
               ),
             ),
           ),
@@ -65,11 +62,40 @@ class _DiscoverState extends State<Discover> {
     );
   }
 
-  void filterCategories(String query) {
+ List<Widget> buildBookLists() {
+  List<Widget> bookLists = [];
+
+  if (filteredCategories.isNotEmpty) 
+  {
+    for (String category in filteredCategories)
+    {
+      for (int i = 0; i < 4; i++)
+      {
+        int startIndex = i * 40;
+        bookLists.add(BookList(category: category, startIndex: startIndex));
+      }
+    }
+  } 
+  else 
+  {
+    for (String category in defaultCategories)
+    {
+      for (int i = 0; i < 1; i++) {
+        int startIndex = i * 40;
+        bookLists.add(BookList(category: category, startIndex: startIndex));
+      }
+    }
+  }
+  return bookLists;
+}
+
+  void filterCategories(String query) async {
     setState(() {
-      filteredCategories = categories
-          .where((category) => category.toLowerCase().contains(query.toLowerCase()))
-          .toList();
+      if (query != "")
+      filteredCategories = defaultCategories
+        .where((category) => category.toLowerCase()
+        .contains(query.toLowerCase()))
+        .toList();
     });
   }
 }

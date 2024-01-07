@@ -6,9 +6,10 @@ import '../../services/book_api.dart';
 import 'book_item.dart';
 
 class BookList extends StatelessWidget {
-  const BookList({super.key, required this.category});
+  const BookList({super.key, required this.category, required this.startIndex});
 
   final String category;
+  final int startIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class BookList extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(left: 16, top: 16),
             child: Text(
-              category.toUpperCase(),
+              startIndex == 0 ? category.toUpperCase() : "",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 28,
@@ -29,7 +30,7 @@ class BookList extends StatelessWidget {
           ),
         ),
         FutureBuilder<List<Book>>(
-          future: getBooks(category),
+          future: getBooks(category, startIndex),
           builder: (context, snapshot)
           {
             if (snapshot.connectionState == ConnectionState.waiting) 
