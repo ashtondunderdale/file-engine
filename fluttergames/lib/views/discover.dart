@@ -3,13 +3,23 @@ import 'package:flutter/material.dart';
 import '../globals.dart';
 import '../widgets/discover/book_list.dart';
 import '../widgets/discover/logout_button.dart';
+import '../widgets/discover/search_bar.dart';
 import '../widgets/nav_panel/nav_panel.dart';
 
-class Discover extends StatelessWidget {
+class Discover extends StatefulWidget {
   Discover({super.key});
 
-  final List<String> categories = ["Philosophy", "Science", "Psychology", "Fiction", "Thriller", "Mystery", 
-                                  "Romance", "History", "Fantasy"];
+  @override
+  _DiscoverState createState() => _DiscoverState();
+}
+
+class _DiscoverState extends State<Discover> {
+  List<String> categories = [
+    "Philosophy", "Science", "Psychology", "Fiction", "Thriller", "Mystery", 
+    "Romance", "History", "Fantasy"
+  ];
+
+  List<String> filteredCategories = [];
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +27,11 @@ class Discover extends StatelessWidget {
       appBar: AppBar(
         surfaceTintColor: Colors.white,
         leading: const LogoutButton(),
+        actions: [
+          BookSearchBar(onSubmitted: (query) {
+            filterCategories(query);
+          }),
+        ],
         title: Text(
           "Discover",
           style: TextStyle(
@@ -37,8 +52,9 @@ class Discover extends StatelessWidget {
           Expanded(
             child: SingleChildScrollView(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  for (String category in categories)
+                  for (String category in filteredCategories.isNotEmpty ? filteredCategories: categories) 
                     BookList(category: category),
                 ],
               ),
@@ -47,5 +63,13 @@ class Discover extends StatelessWidget {
         ],
       )
     );
+  }
+
+  void filterCategories(String query) {
+    setState(() {
+      filteredCategories = categories
+          .where((category) => category.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    });
   }
 }
