@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:fluttergames/views/discover.dart';
+
+import 'discover.dart';
 
 class Login extends StatelessWidget {
-  const Login({super.key});
+  Login({super.key});
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +22,15 @@ class Login extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 color: const Color.fromARGB(255, 231, 231, 231),
               ),
-              child: const Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
                     width: 300,
                     height: 40,
                     child: TextField(
-                      decoration: InputDecoration(
+                      controller: emailController,
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
                       ),
                     ),
@@ -36,7 +41,9 @@ class Login extends StatelessWidget {
                       width: 300,
                       height: 40,
                       child: TextField(
-                        decoration: InputDecoration(
+                        controller: passwordController,
+                        obscureText: false,
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
                         ),
                       ),
@@ -50,7 +57,7 @@ class Login extends StatelessWidget {
             padding: const EdgeInsets.only(top: 24),
             child: IconButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const Discover()));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Discover()));
               },
               icon: const Icon(
                 Icons.login,

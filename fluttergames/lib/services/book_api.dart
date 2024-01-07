@@ -7,4 +7,4 @@ Future<List<Book>> getBooks(String category) async {
     printType: PrintType.books,
     orderBy: OrderBy.relevance,
   );
-} // might affect book calls by removing variable idk
+}

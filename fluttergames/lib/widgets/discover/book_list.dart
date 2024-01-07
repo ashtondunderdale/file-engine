@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluttergames/globals.dart';
 import 'package:google_books_api/google_books_api.dart';
 
+import '../../globals.dart';
 import '../../services/book_api.dart';
 import 'book_item.dart';
 
@@ -17,7 +17,7 @@ class BookList extends StatelessWidget {
         Align(
           alignment: Alignment.centerLeft,
           child: Padding(
-            padding: const EdgeInsets.only(left: 16),
+            padding: const EdgeInsets.only(left: 16, top: 16),
             child: Text(
               category.toUpperCase(),
               style: TextStyle(

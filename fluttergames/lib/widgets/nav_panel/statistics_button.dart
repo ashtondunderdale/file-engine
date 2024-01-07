@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluttergames/views/statistics.dart';
 
 import '../../globals.dart';
+import '../../views/statistics.dart';
 
 class StatisticsButton extends StatelessWidget {
   const StatisticsButton({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluttergames/views/my_books.dart';
 
 import '../../globals.dart';
+import '../../views/my_books.dart';
 
 class MyBooksButton extends StatelessWidget {
   const MyBooksButton({super.key});

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttergames/globals.dart';
+
+import '../globals.dart';
 
 
 class MyBooks extends StatelessWidget {

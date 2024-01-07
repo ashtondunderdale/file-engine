@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluttergames/views/settings.dart';
-import 'package:fluttergames/views/statistics.dart';
 
 import '../../globals.dart';
+import '../../views/settings.dart';
 
 class SettingsButton extends StatelessWidget {
   const SettingsButton({super.key});

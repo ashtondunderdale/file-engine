@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fluttergames/globals.dart';
 
+import '../globals.dart';
 import '../widgets/discover/book_list.dart';
 import '../widgets/discover/logout_button.dart';
 import '../widgets/nav_panel/nav_panel.dart';
@@ -12,6 +12,7 @@ class Discover extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        surfaceTintColor: Colors.white,
         leading: const LogoutButton(),
         title: Text(
           "Discover",
@@ -31,12 +32,18 @@ class Discover extends StatelessWidget {
         children: [
           NavPanel(),
           Expanded(
-            child: Column(
-              children: [
-                BookList(category: "Philosophy"),
-                BookList(category: "Science"),
-                BookList(category: "Psychology"),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  BookList(category: "Philosophy"),
+                  BookList(category: "Science"),
+                  BookList(category: "Psychology"),
+                  BookList(category: "Fiction"),
+                  BookList(category: "Thriller"),
+                  BookList(category: "Mystery"),
+                  BookList(category: "Romance"),
+                ],
+              ),
             ),
           ),
         ],
