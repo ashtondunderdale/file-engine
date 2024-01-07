@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BookItem extends StatelessWidget {
-  const BookItem({Key? key, required this.imageLinks});
+  const BookItem({super.key, required this.imageLinks});
 
   final Map<String, Uri>? imageLinks;
 

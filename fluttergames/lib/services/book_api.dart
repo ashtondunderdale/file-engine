@@ -1,12 +1,10 @@
 import 'package:google_books_api/google_books_api.dart';
 
 Future<List<Book>> getBooks(String category) async {
-  final List<Book> books = await const GoogleBooksApi().searchBooks(
+  return await const GoogleBooksApi().searchBooks(
     category, 
     maxResults: 20,
     printType: PrintType.books,
     orderBy: OrderBy.relevance,
   );
-
-  return books;
-}
+} // might affect book calls by removing variable idk

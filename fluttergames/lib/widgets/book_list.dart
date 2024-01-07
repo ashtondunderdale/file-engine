@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttergames/globals.dart';
 import 'package:google_books_api/google_books_api.dart';
 
 import '../services/book_api.dart';
@@ -19,10 +20,10 @@ class BookList extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16),
             child: Text(
               category,
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 28,
-                color: Color.fromARGB(255, 77, 77, 77)
+                color: textColour,
               ),
             ),
           ),
@@ -49,7 +50,7 @@ class BookList extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SizedBox(
-                  height: 160,
+                  height: 200,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: bookItemList.length,

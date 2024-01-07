@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:fluttergames/globals.dart';
 
 import '../widgets/book_list.dart';
-import '../widgets/nav_panel.dart';
+import '../widgets/nav_panel/nav_panel.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class Discover extends StatelessWidget {
+  const Discover({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "Discover",
           style: TextStyle(
-            color: Colors.grey,
+            color: textColour,
             fontSize: 20,
             fontWeight: FontWeight.bold
           ),
         ),
         shape: const Border(
           bottom: BorderSide(
-            color: Colors.grey
+            color: Color.fromARGB(255, 214, 214, 214)
           )
         ),
       ),
