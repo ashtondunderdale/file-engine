@@ -3,7 +3,6 @@ import 'package:google_books_api/google_books_api.dart';
 
 import '../globals.dart';
 
-
 class BookPage extends StatelessWidget {
   const BookPage({super.key, required this.book});
 
@@ -66,7 +65,7 @@ class BookPage extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 16, top: 16),
                       child: Text(
-                        "By ${book.volumeInfo.authors.join(', ')}",
+                        "By ${book.volumeInfo.authors.join(', ')} | ${book.volumeInfo.publishedDate?.year}",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: textColour,
@@ -75,8 +74,44 @@ class BookPage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  for (var category in book.volumeInfo.categories)
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 16, top: 16),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),
+                          child: Text(
+                            category,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: textColour,
+                              fontSize: 11,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Text(
+                      book.volumeInfo.description.length > 300
+                        ? "${book.volumeInfo.description.substring(0, 300)}..."
+                        : book.volumeInfo.description,
+                      style: const TextStyle(
+                        fontSize: 14
+                      ),
+                    ), 
+                  ),
                 ],
-              )
+              ),
             ),
           ],
         ),
