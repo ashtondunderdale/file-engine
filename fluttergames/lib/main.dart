@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'views/home.dart';
+import 'views/discover.dart';
 
 void main() => runApp(const App());
 
