@@ -14,7 +14,7 @@ class BookItem extends StatelessWidget {
       padding: const EdgeInsets.only(left: 8, right: 8),
       child: GestureDetector(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => BookPage(bookTitle: book.volumeInfo.title)));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => BookPage(book: book)));
         },
         child: Image.network(book.volumeInfo.imageLinks?['smallThumbnail']?.toString() ?? '')
       ),
