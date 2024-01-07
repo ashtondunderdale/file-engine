@@ -5,12 +5,14 @@ import '../services/book_api.dart';
 import 'book_item.dart';
 
 class BookList extends StatelessWidget {
-  const BookList({super.key});
+  const BookList({super.key, required this.category});
+
+  final String category;
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Book>>(
-      future: getBooks(),
+      future: getBooks(category),
       builder: (context, snapshot) 
       {
         if (snapshot.connectionState == ConnectionState.waiting) 

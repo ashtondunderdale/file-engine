@@ -9,7 +9,13 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: BookList()
+      body: Column(
+        children: [
+          BookList(category: "Philosophy"),
+          BookList(category: "Fiction"),
+          BookList(category: "Romance"),
+        ],
+      )
     );
   }
 }
