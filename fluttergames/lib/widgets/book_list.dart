@@ -30,7 +30,7 @@ class BookList extends StatelessWidget {
         ),
         FutureBuilder<List<Book>>(
           future: getBooks(category),
-          builder: (context, snapshot) 
+          builder: (context, snapshot)
           {
             if (snapshot.connectionState == ConnectionState.waiting) 
             {

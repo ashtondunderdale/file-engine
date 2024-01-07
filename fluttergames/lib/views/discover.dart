@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttergames/globals.dart';
 
 import '../widgets/book_list.dart';
+import '../widgets/logout_button.dart';
 import '../widgets/nav_panel/nav_panel.dart';
 
 class Discover extends StatelessWidget {
@@ -11,6 +12,7 @@ class Discover extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: const LogoutButton(),
         title: Text(
           "Discover",
           style: TextStyle(
