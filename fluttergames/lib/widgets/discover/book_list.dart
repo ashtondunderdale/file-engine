@@ -43,9 +43,7 @@ class BookList extends StatelessWidget {
             else if (snapshot.hasData) 
             {
               List<BookItem> bookItemList = snapshot.data!
-                .map((book) => BookItem(
-                  imageLinks: book.volumeInfo.imageLinks
-                  )
+                .map((book) => BookItem(book: book)
                 ).toList();
               return Padding(
                 padding: const EdgeInsets.all(8.0),

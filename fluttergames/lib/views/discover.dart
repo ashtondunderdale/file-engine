@@ -6,7 +6,10 @@ import '../widgets/discover/logout_button.dart';
 import '../widgets/nav_panel/nav_panel.dart';
 
 class Discover extends StatelessWidget {
-  const Discover({super.key});
+  Discover({super.key});
+
+  final List<String> categories = ["Philosophy", "Science", "Psychology", "Fiction", "Thriller", "Mystery", 
+                                  "Romance", "History", "Fantasy"];
 
   @override
   Widget build(BuildContext context) {
@@ -28,20 +31,15 @@ class Discover extends StatelessWidget {
           )
         ),
       ),
-      body: const Row(
+      body: Row(
         children: [
-          NavPanel(),
+          const NavPanel(),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  BookList(category: "Philosophy"),
-                  BookList(category: "Science"),
-                  BookList(category: "Psychology"),
-                  BookList(category: "Fiction"),
-                  BookList(category: "Thriller"),
-                  BookList(category: "Mystery"),
-                  BookList(category: "Romance"),
+                  for (String category in categories)
+                    BookList(category: category),
                 ],
               ),
             ),

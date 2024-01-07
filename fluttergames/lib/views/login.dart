@@ -28,40 +28,50 @@ class Login extends StatelessWidget {
                   SizedBox(
                     width: 300,
                     height: 40,
-                    child: TextField(
+                    child: TextFormField(
+                      cursorColor: const Color.fromARGB(255, 61, 61, 61),
                       controller: emailController,
                       decoration: const InputDecoration(
+                        labelText: 'Email',
                         border: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                        ),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 16),
+                    padding: const EdgeInsets.only(top: 16),
                     child: SizedBox(
                       width: 300,
                       height: 40,
-                      child: TextField(
+                      child: TextFormField(
+                      cursorColor: const Color.fromARGB(255, 61, 61, 61),
                         controller: passwordController,
-                        obscureText: false,
+                        obscureText: true,
                         decoration: const InputDecoration(
+                          labelText: 'Password',
                           border: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ],
-              )
+              ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 24),
             child: IconButton(
               onPressed: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Discover()));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Discover()));
               },
               icon: const Icon(
                 Icons.login,
-                color: Color.fromARGB(255, 90, 90, 90),
+                color: Colors.grey,
                 size: 32,
               ),
             ),
