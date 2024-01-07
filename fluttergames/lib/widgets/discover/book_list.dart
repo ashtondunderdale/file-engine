@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttergames/globals.dart';
 import 'package:google_books_api/google_books_api.dart';
 
-import '../services/book_api.dart';
+import '../../services/book_api.dart';
 import 'book_item.dart';
 
 class BookList extends StatelessWidget {
