@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttergames/widgets/nav_panel/my_books_button.dart';
 
+import 'settings_button.dart';
 import 'statistics_button.dart';
 
 
@@ -27,6 +28,8 @@ class NavPanel extends StatelessWidget {
         children: [
           MyBooksButton(),
           StatisticsButton(),
+          Spacer(),
+          SettingsButton(),
         ],
       ),
     );

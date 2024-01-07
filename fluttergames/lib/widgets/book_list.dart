@@ -19,7 +19,7 @@ class BookList extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(left: 16),
             child: Text(
-              category,
+              category.toUpperCase(),
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 28,
