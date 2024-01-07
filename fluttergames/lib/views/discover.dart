@@ -16,8 +16,8 @@ class Discover extends StatefulWidget {
 class _DiscoverState extends State<Discover> {
 
   List<String> defaultCategories = [
-    "Philosophy", "Science", "Psychology", "Fiction", "Thriller", "Mystery", 
-    "Romance", "History", "Fantasy"
+    "philosophy", "science", "psychology", "fiction", "thriller", "mystery", 
+    "romance", "history", "fantasy"
   ];
 
   List<String> filteredCategories = [];
@@ -91,11 +91,17 @@ class _DiscoverState extends State<Discover> {
 
   void filterCategories(String query) async {
     setState(() {
-      if (query != "")
-      filteredCategories = defaultCategories
+      if (query != "" && defaultCategories.contains(query)) 
+      {
+        filteredCategories = defaultCategories
         .where((category) => category.toLowerCase()
         .contains(query.toLowerCase()))
         .toList();
+      }
+      else
+      {
+        filteredCategories.clear();
+      }
     });
   }
 }

@@ -18,6 +18,9 @@ class BookSearchBar extends StatelessWidget {
         child: TextField(
           controller: searchController,
           decoration: const InputDecoration(
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey),
+            ),
             labelText: "Search categories...",
             border: OutlineInputBorder(),
             prefixIcon: Icon(Icons.search),
