@@ -11,41 +11,63 @@ class BookList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Book>>(
-      future: getBooks(category),
-      builder: (context, snapshot) 
-      {
-        if (snapshot.connectionState == ConnectionState.waiting) 
-        {
-          return const Center(child: CircularProgressIndicator());
-        } 
-        else if (snapshot.hasError)
-        {
-          return Center(child: Text('Error: ${snapshot.error}'));
-        } 
-        else if (snapshot.hasData) 
-        {
-          List<BookItem> bookItemList = snapshot.data!
-            .map((book) => BookItem(
-              imageLinks: book.volumeInfo.imageLinks
-              )
-            ).toList();
-          return SizedBox(
-            height: 160,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: bookItemList.length,
-              itemBuilder: (context, index) 
-              {
-                return bookItemList[index]; 
-              },
+    return Column(
+      children: [
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Text(
+              category,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 28,
+                color: Color.fromARGB(255, 77, 77, 77)
+              ),
             ),
-          );
-        } else 
-        {
-          return const Center(child: Text('No data available.'));
-        }
-      },
+          ),
+        ),
+        FutureBuilder<List<Book>>(
+          future: getBooks(category),
+          builder: (context, snapshot) 
+          {
+            if (snapshot.connectionState == ConnectionState.waiting) 
+            {
+              return const Center(child: CircularProgressIndicator());
+            } 
+            else if (snapshot.hasError)
+            {
+              return Center(child: Text('Error: ${snapshot.error}'));
+            } 
+            else if (snapshot.hasData) 
+            {
+              List<BookItem> bookItemList = snapshot.data!
+                .map((book) => BookItem(
+                  imageLinks: book.volumeInfo.imageLinks
+                  )
+                ).toList();
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SizedBox(
+                  height: 160,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: bookItemList.length,
+                    itemBuilder: (context, index) 
+                    {
+                      return bookItemList[index]; 
+                    },
+                  ),
+                ),
+              );
+            } 
+            else 
+            {
+              return const Center(child: Text('No data available.'));
+            }
+          },
+        ),
+      ],
     );
   }
 }
