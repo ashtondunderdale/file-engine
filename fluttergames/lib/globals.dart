@@ -6,3 +6,4 @@ Color textColour = const Color.fromARGB(255, 75, 75, 75);
 
 List<Book> myBooks = [];
 List<Book> favouriteBooks = [];
+int readingChallenge = 50;
