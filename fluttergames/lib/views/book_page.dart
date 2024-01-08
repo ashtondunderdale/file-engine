@@ -166,7 +166,33 @@ class _BookPageState extends State<BookPage> {
                         ),
                       ),
                     ),
-                  )
+                  ),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: Tooltip(
+                      message: booksRead.contains(widget.book) ? "Remove from Read" : "Read",
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 8),
+                        child: IconButton(
+                          onPressed: () {
+                            if (booksRead.contains(widget.book)){
+                              booksRead.remove(widget.book);
+                            }
+                            else{
+                              booksRead.add(widget.book);
+                            }
+                            setState(() {
+                              
+                            });
+                          }, 
+                          icon: Icon(
+                            booksRead.contains(widget.book) ? Icons.check_circle : Icons.book,        
+                            color: booksRead.contains(widget.book) ? const Color.fromARGB(255, 85, 188, 89) : Colors.grey,             
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttergames/widgets/statistics/books_read_stat.dart';
 
 import '../globals.dart';
 
@@ -24,7 +25,11 @@ class Statistics extends StatelessWidget {
           )
         ),
       ),
-      body: Container(),
+      body: const Column(
+        children: [
+          BooksReadStat(),
+        ],
+      ),
     );
   }
 }
