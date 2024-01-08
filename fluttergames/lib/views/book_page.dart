@@ -3,17 +3,22 @@ import 'package:google_books_api/google_books_api.dart';
 
 import '../globals.dart';
 
-class BookPage extends StatelessWidget {
+class BookPage extends StatefulWidget {
   const BookPage({super.key, required this.book});
 
   final Book book;
 
   @override
+  State<BookPage> createState() => _BookPageState();
+}
+
+class _BookPageState extends State<BookPage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          book.volumeInfo.title,
+          widget.book.volumeInfo.title,
           style: TextStyle(
             color: textColour,
             fontSize: 20,
@@ -33,7 +38,7 @@ class BookPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 32),
               child: Image.network(
-                book.volumeInfo.imageLinks?['smallThumbnail']?.toString() ?? '',
+                widget.book.volumeInfo.imageLinks?['smallThumbnail']?.toString() ?? '',
               ),
             ),
             Container(
@@ -50,7 +55,7 @@ class BookPage extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 16, top: 16),
                       child: Text(
-                        book.volumeInfo.title,
+                        widget.book.volumeInfo.title,
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
@@ -65,7 +70,7 @@ class BookPage extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 16, top: 16),
                       child: Text(
-                        "By ${book.volumeInfo.authors.join(', ')} | ${book.volumeInfo.publishedDate?.year}",
+                        "By ${widget.book.volumeInfo.authors.join(', ')} | ${widget.book.volumeInfo.publishedDate?.year}",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: textColour,
@@ -74,7 +79,7 @@ class BookPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  for (var category in book.volumeInfo.categories)
+                  for (var category in widget.book.volumeInfo.categories)
                   Align(
                     alignment: Alignment.topLeft,
                     child: Padding(
@@ -102,9 +107,9 @@ class BookPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: Text(
-                      book.volumeInfo.description.length > 300
-                        ? "${book.volumeInfo.description.substring(0, 300)}..."
-                        : book.volumeInfo.description,
+                      widget.book.volumeInfo.description.length > 300
+                        ? "${widget.book.volumeInfo.description.substring(0, 300)}..."
+                        : widget.book.volumeInfo.description,
                       style: const TextStyle(
                         fontSize: 14
                       ),
@@ -113,15 +118,24 @@ class BookPage extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Tooltip(
-                      message: "Save",
+                      message: myBooks.contains(widget.book) ? "Saved" : "Save",
                       child: Padding(
                         padding: const EdgeInsets.only(left: 8),
                         child: IconButton(
                           onPressed: () {
-                            myBooks.add(book);
+                            if (myBooks.contains(widget.book)){
+                              myBooks.remove(widget.book);
+                            }
+                            else{
+                              myBooks.add(widget.book);
+                            }
+                            setState(() {
+                              
+                            });
                           }, 
-                          icon: const Icon(
-                            Icons.bookmark,                     
+                          icon: Icon(
+                            myBooks.contains(widget.book) ? Icons.check : Icons.bookmark,        
+                            color: myBooks.contains(widget.book) ? const Color.fromARGB(255, 85, 188, 89) : Colors.grey,             
                           )
                         ),
                       ),
