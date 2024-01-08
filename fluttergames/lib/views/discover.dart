@@ -17,7 +17,7 @@ class _DiscoverState extends State<Discover> {
 
   List<String> defaultCategories = [
     "philosophy", "science", "psychology", "fiction", "thriller", "mystery", 
-    "romance", "history", "fantasy"
+    "romance", "history", "fantasy", "horror", "humor", "poetry", "feminism","spirituality",
   ];
 
   List<String> filteredCategories = [];

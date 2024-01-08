@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_books_api/google_books_api.dart';
 
 import '../globals.dart';
 
@@ -24,7 +25,14 @@ class MyBooks extends StatelessWidget {
           )
         ),
       ),
-      body: Container(),
+      body: Container(
+        child: Column(
+          children: [
+            for (Book book in myBooks)
+              Text(book.volumeInfo.title)
+          ],
+        ),
+      ),
     );
   }
 }

@@ -110,6 +110,23 @@ class BookPage extends StatelessWidget {
                       ),
                     ), 
                   ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Tooltip(
+                      message: "Save",
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 8),
+                        child: IconButton(
+                          onPressed: () {
+                            myBooks.add(book);
+                          }, 
+                          icon: const Icon(
+                            Icons.bookmark,                     
+                          )
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
