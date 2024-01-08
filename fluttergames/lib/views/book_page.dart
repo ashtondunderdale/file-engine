@@ -136,7 +136,33 @@ class _BookPageState extends State<BookPage> {
                           icon: Icon(
                             myBooks.contains(widget.book) ? Icons.check : Icons.bookmark,        
                             color: myBooks.contains(widget.book) ? const Color.fromARGB(255, 85, 188, 89) : Colors.grey,             
-                          )
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Tooltip(
+                      message: favouriteBooks.contains(widget.book) ? "Unfavourite" : "Favourite",
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: IconButton(
+                          onPressed: () {
+                            if (favouriteBooks.contains(widget.book)){
+                              favouriteBooks.remove(widget.book);
+                            }
+                            else{
+                              favouriteBooks.add(widget.book);
+                            }
+                            setState(() {
+                              
+                            });
+                          }, 
+                          icon: Icon(
+                            Icons.star,
+                            color: favouriteBooks.contains(widget.book) ? const Color.fromARGB(255, 195, 178, 25) : Colors.grey,
+                          ),
                         ),
                       ),
                     ),
