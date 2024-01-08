@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'my_books_button.dart';
+import 'profile_button.dart';
 import 'settings_button.dart';
 import 'statistics_button.dart';
 
@@ -28,6 +29,7 @@ class NavPanel extends StatelessWidget {
         children: [
           MyBooksButton(),
           StatisticsButton(),
+          ProfileButton(),
           Spacer(),
           SettingsButton(),
         ],

@@ -118,7 +118,7 @@ class _BookPageState extends State<BookPage> {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Tooltip(
-                      message: myBooks.contains(widget.book) ? "Saved" : "Save",
+                      message: myBooks.contains(widget.book) ? "Unsave" : "Save",
                       child: Padding(
                         padding: const EdgeInsets.only(left: 8),
                         child: IconButton(
