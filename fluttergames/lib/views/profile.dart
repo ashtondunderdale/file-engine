@@ -37,7 +37,7 @@ class Profile extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Your Goal: 0 / $readingChallenge books read",
+                  "Your Goal: ${booksRead.length} / $readingChallenge books read",
                   style: const TextStyle(
                     color: Color.fromARGB(255, 74, 74, 74),
                     fontSize: 36,
@@ -45,26 +45,30 @@ class Profile extends StatelessWidget {
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 16),
+              Padding(
+                padding: const EdgeInsets.only(top: 16),
                 child: Row(
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 80),
                       child: Text(
                         "Ashton Dunderdale",
                         style: TextStyle(
-                          fontSize: 24
+                          fontSize: 24,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold
                         ),
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Padding(
-                      padding: EdgeInsets.only(right: 80),
+                      padding: const EdgeInsets.only(right: 80),
                       child: Text(
-                        "55 Books",
-                        style: TextStyle(
-                          fontSize: 24
+                        "${booksRead.length} Book(s) Read",
+                        style: const TextStyle(
+                          fontSize: 24,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold
                         ),
                       ),
                     )

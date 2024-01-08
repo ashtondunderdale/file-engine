@@ -8,4 +8,4 @@ List<Book> myBooks = [];
 List<Book> favouriteBooks = [];
 List<Book> booksRead = [];
 
-int readingChallenge = 50;
+int readingChallenge = 100;
