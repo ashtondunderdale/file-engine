@@ -39,15 +39,15 @@ class MyBooks extends StatelessWidget {
       ) : Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 8),
+          Padding(
+            padding: const EdgeInsets.only(left: 8),
             child: Text(
-              "Favourites",
+              "Favourites (${favouriteBooks.length})",
               textAlign: TextAlign.start,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Colors.grey
+                color: Color.fromARGB(255, 78, 78, 78)
               ),
             ),
           ),
@@ -60,15 +60,15 @@ class MyBooks extends StatelessWidget {
               ),
             ],
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 8),
+          Padding(
+            padding: const EdgeInsets.only(left: 8, top: 40),
             child: Text(
-              "Saved",
+              "Saved (${myBooks.length})",
               textAlign: TextAlign.start,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Colors.grey
+                color: Color.fromARGB(255, 78, 78, 78)
               ),
             ),
           ),

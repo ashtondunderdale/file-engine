@@ -9,7 +9,7 @@ class BooksReadStat extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 16, left: 16),
       child: Text(
-        " You have read: ${booksRead.length} book",
+        " You have read: ${booksRead.length} book(s)",
         style: const TextStyle(
           fontSize: 32,
           color: Colors.grey,
