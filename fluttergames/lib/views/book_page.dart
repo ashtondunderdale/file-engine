@@ -105,13 +105,13 @@ class _BookPageState extends State<BookPage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(20),
                     child: Text(
-                      widget.book.volumeInfo.description.length > 300
+                      widget.book.volumeInfo.description.length > 400
                         ? "${widget.book.volumeInfo.description.substring(0, 300)}..."
                         : widget.book.volumeInfo.description,
                       style: const TextStyle(
-                        fontSize: 14
+                        fontSize: 15
                       ),
                     ), 
                   ),
@@ -167,27 +167,30 @@ class _BookPageState extends State<BookPage> {
                       ),
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Tooltip(
-                      message: booksRead.contains(widget.book) ? "Remove from Read" : "Read",
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8),
-                        child: IconButton(
-                          onPressed: () {
-                            if (booksRead.contains(widget.book)){
-                              booksRead.remove(widget.book);
-                            }
-                            else{
-                              booksRead.add(widget.book);
-                            }
-                            setState(() {
-                              
-                            });
-                          }, 
-                          icon: Icon(
-                            booksRead.contains(widget.book) ? Icons.check_circle : Icons.book,        
-                            color: booksRead.contains(widget.book) ? const Color.fromARGB(255, 85, 188, 89) : Colors.grey,             
+                  Padding(
+                    padding: const EdgeInsets.only(top: 130, right: 8),
+                    child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: Tooltip(
+                        message: booksRead.contains(widget.book) ? "Remove from Read" : "Read",
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: IconButton(
+                            onPressed: () {
+                              if (booksRead.contains(widget.book)){
+                                booksRead.remove(widget.book);
+                              }
+                              else{
+                                booksRead.add(widget.book);
+                              }
+                              setState(() {
+                                
+                              });
+                            }, 
+                            icon: Icon(
+                              booksRead.contains(widget.book) ? Icons.check_circle : Icons.book,        
+                              color: booksRead.contains(widget.book) ? const Color.fromARGB(255, 85, 188, 89) : Colors.grey,             
+                            ),
                           ),
                         ),
                       ),
