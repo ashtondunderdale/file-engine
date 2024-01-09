@@ -63,7 +63,7 @@ class MyBooks extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 8, top: 40),
             child: Text(
-              "Saved (${myBooks.length})",
+              "Saved (${myBooks.length}) ",
               textAlign: TextAlign.start,
               style: const TextStyle(
                 fontSize: 24,
