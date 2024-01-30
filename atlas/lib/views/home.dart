@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fluttergames/widgets/profile_card.dart';
+import 'package:fluttergames/widgets/account_history.dart';
 
-import '../models/account.dart';
-import '../models/profile.dart';
+import '../widgets/profile_card.dart';
+
 
 class Home extends StatelessWidget {
   Home({super.key});
@@ -11,6 +11,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        surfaceTintColor: Colors.white,
         shape: const Border(
           bottom: BorderSide(color: Color.fromARGB(255, 212, 212, 212))
         ),
@@ -44,19 +45,18 @@ class Home extends StatelessWidget {
       body: Row(
         children: [
           Expanded(
-            child: Container(
-              color: const Color.fromARGB(255, 206, 206, 206),
+            child: SizedBox(
               width: 200,
               height: MediaQuery.of(context).size.height,
               child: const Column(
                 children: [
-                  // main stuff
+                  AccountHistory()
                 ],
               ),
             ),
           ),
           Container(
-            color: const Color.fromARGB(255, 121, 121, 121),
+            color: const Color.fromARGB(255, 242, 242, 242),
             width: 300,
             height: MediaQuery.sizeOf(context).height,
             child: const Column(

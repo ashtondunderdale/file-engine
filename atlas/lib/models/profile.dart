@@ -7,7 +7,7 @@ class Profile {
   String accountNumber;
   String bank;
 
-  List<Account> entries;
+  List<Account> accounts;
 
-  Profile({required this.name, required this.balance, required this.accountNumber, required this.bank, required this.entries});
+  Profile({required this.name, required this.balance, required this.accountNumber, required this.bank, required this.accounts});
 }
