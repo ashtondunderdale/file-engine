@@ -121,7 +121,12 @@ class _AddAccountState extends State<AddAccount> {
                             .map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
-                            child: Text(value),
+                            child: Text(
+                              value,
+                              style: const TextStyle(
+                                color: Color.fromARGB(255, 87, 87, 87),
+                              ),
+                            ),
                           );
                         }).toList(),
                       ),
@@ -142,31 +147,44 @@ class _AddAccountState extends State<AddAccount> {
                         ),
                         const Text(
                           'Income',
-                          style: TextStyle(),
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 87, 87, 87),
+
+                          ),
                         ),
                       ],
                     ),
-                    TextButton(
-                      onPressed: () {
-                        Account account = Account(title: titleController.text, 
-                          type: selectedType, 
-                          amount: double.tryParse(amountController.text) ?? 0.0,
-                          date: DateTime.now(), 
-                          isIncome: isIncome,
-                        );
+                    Padding(
+                      padding: const EdgeInsets.only(top: 48, left: 8),
+                      child: TextButton(
+                        onPressed: () {
+                          Account account = Account(title: titleController.text, 
+                            type: selectedType, 
+                            amount: double.tryParse(amountController.text) ?? 0.0,
+                            date: DateTime.now(), 
+                            isIncome: isIncome,
+                          );
 
-                        setState(() {
-                          activeProfile!.accounts.add(account);
-                        });
-                      },
-                      child: const Text( 
-                      "Add Account",
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 14
+                          if (isIncome) {
+                            activeProfile!.balance += double.tryParse(amountController.text) ?? 0.0;
+                          }
+                          else {
+                            activeProfile!.balance -= double.tryParse(amountController.text) ?? 0.0;
+                          }
+                      
+                          setState(() {
+                            activeProfile!.accounts.add(account);
+                          });
+                        },
+                        child: const Text( 
+                        "Add Account",
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 14
+                          ),
+                        ),
                       ),
                     ),
-                  ),
                   ],
                 ),
               ),
