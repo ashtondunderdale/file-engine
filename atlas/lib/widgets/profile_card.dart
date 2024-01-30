@@ -42,11 +42,7 @@ class ProfileCard extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      profiles.isEmpty
-                          ? activeProfile?.balance != null
-                              ? currencyFormat.format(activeProfile!.balance)
-                              : "None"
-                          : currencyFormat.format(profiles.first.balance),  
+                      currencyFormat.format(activeProfile!.balance),  
                         style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
