@@ -11,6 +11,9 @@ List<Profile> profiles = [
       Account(title: "THE GROCERIES", type: "GENERAL", amount: 31.20, date: DateTime.now(), isIncome: false),
       Account(title: "HELP ME", type: "GENERAL", amount: 5, date: DateTime.now(), isIncome: false),
       Account(title: "PLEASE IM TRAPP-", type: "SALARY", amount: 1203.68, date: DateTime.now(), isIncome: true),
+    ]),
+    Profile(name: "TEST", balance: 320.22, accountNumber: "91883741", bank: "Barclays", accounts: [
+      Account(title: "account 1", type: "GENERAL", amount: 2.49, date: DateTime.now(), isIncome: true),
     ])
   ];
 
