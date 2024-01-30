@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fluttergames/data.dart';
+import 'package:fluttergames/models/account.dart';
 import 'package:fluttergames/widgets/navigation_panel.dart';
 
 class AddAccount extends StatefulWidget {
@@ -70,8 +72,8 @@ class _AddAccountState extends State<AddAccount> {
           const Spacer(),
           Center(
             child: Container(
-              width: 1200,
-              height: 600,
+              width: 800,
+              height: 400,
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 230, 230, 230),
                 borderRadius: BorderRadius.circular(8),
@@ -79,7 +81,7 @@ class _AddAccountState extends State<AddAccount> {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
                       width: 200,
@@ -104,28 +106,31 @@ class _AddAccountState extends State<AddAccount> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 20),
-                    DropdownButton<String>(
-                      value: selectedType,
-                      onChanged: (String? newValue) {
-                        if (newValue != null) {
-                          setState(() {
-                            selectedType = newValue;
-                          });
-                        }
-                      },
-                      items: ['Select Type', 'Savings', 'Expense']
-                          .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 64),
+                      child: DropdownButton<String>(
+                        value: selectedType,
+                        onChanged: (String? newValue) {
+                          if (newValue != null) {
+                            setState(() {
+                              selectedType = newValue;
+                            });
+                          }
+                        },
+                        items: ['Select Type', 'General', 'Travel', 'Salary', 'Rent', 'Other']
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
                     ),
                     const SizedBox(height: 20),
                     Row(
                       children: [
                         Checkbox(
+                          fillColor: MaterialStateColor.resolveWith((states) => Colors.grey),
                           value: isIncome,
                           onChanged: (bool? value) {
                             if (value != null) {
@@ -141,6 +146,27 @@ class _AddAccountState extends State<AddAccount> {
                         ),
                       ],
                     ),
+                    TextButton(
+                      onPressed: () {
+                        Account account = Account(title: titleController.text, 
+                          type: selectedType, 
+                          amount: double.tryParse(amountController.text) ?? 0.0,
+                          date: DateTime.now(), 
+                          isIncome: isIncome,
+                        );
+
+                        setState(() {
+                          activeProfile!.accounts.add(account);
+                        });
+                      },
+                      child: const Text( 
+                      "Add Account",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 14
+                      ),
+                    ),
+                  ),
                   ],
                 ),
               ),
