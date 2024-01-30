@@ -38,6 +38,16 @@ class AccountTile extends StatelessWidget {
             SizedBox(
               width: 100,
               child: Text(
+                account.type,
+                style: const TextStyle(
+                  color: Colors.grey,
+                ),
+              ),
+            ),
+            const Spacer(),
+            SizedBox(
+              width: 100,
+              child: Text(
                 "£${currencyFormat.format(account.amount)}",
                 style: const TextStyle(
                   color: Colors.grey,

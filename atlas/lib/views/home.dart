@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:fluttergames/widgets/account_history.dart';
 import 'package:fluttergames/widgets/navigation_panel.dart';
 
+import '../models/profile.dart';
 import '../widgets/profile_card.dart';
 
 
 class Home extends StatelessWidget {
-  Home({super.key});
+  Home({super.key, required this.profile});
+
+  Profile profile;
 
   @override
   Widget build(BuildContext context) {

@@ -19,7 +19,7 @@ class AccountHistory extends StatelessWidget {
             const Align(
               alignment: Alignment.centerLeft,
               child: Padding(
-                padding: EdgeInsets.only(left: 8, top: 8),
+                padding: EdgeInsets.only(left: 8, top: 8, bottom: 8),
                 child: Text(
                   "ACCOUNTS",
                   style: TextStyle(
