@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttergames/widgets/account_history.dart';
+import 'package:fluttergames/widgets/navigation_panel.dart';
 
 import '../widgets/profile_card.dart';
 
@@ -44,14 +45,19 @@ class Home extends StatelessWidget {
       ),
       body: Row(
         children: [
+          NavigationPanel(),
           Expanded(
             child: SizedBox(
               width: 200,
               height: MediaQuery.of(context).size.height,
-              child: const Column(
-                children: [
-                  AccountHistory()
-                ],
+              child: const Padding(
+                padding: EdgeInsets.only(bottom: 200),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    AccountHistory()
+                  ],
+                ),
               ),
             ),
           ),
