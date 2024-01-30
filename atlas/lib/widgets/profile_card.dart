@@ -19,55 +19,68 @@ class ProfileCard extends StatelessWidget {
           color: const Color.fromARGB(255, 208, 208, 208),
           borderRadius: BorderRadius.circular(8),
         ),
-        child: Column(
+        child: Row(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 16, top: 16),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "FUNDS",
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 10,
+            Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(top: 16, right: 28),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "FUNDS",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 10,
+                      ),
+                    ),
                   ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      profiles.isEmpty
+                          ? activeProfile?.balance != null
+                              ? currencyFormat.format(activeProfile!.balance)
+                              : "None"
+                          : currencyFormat.format(profiles.first.balance),  
+                        style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 118, 118, 118),
+                        letterSpacing: 1
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16, top: 48),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      profiles.isEmpty ? "None" : activeProfile!.name,
+                      style: const TextStyle(
+                        color: Color.fromARGB(255, 118, 118, 118),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 110, left: 96),
+              child: Text(
+                activeProfile!.accountNumber,
+                style: const TextStyle(
+                  color: Colors.grey
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 16),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  profiles.isEmpty
-                      ? activeProfile?.balance != null
-                          ? currencyFormat.format(activeProfile!.balance)
-                          : "None"
-                      : currencyFormat.format(profiles.first.balance),  
-                    style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 118, 118, 118),
-                    letterSpacing: 1
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 16, top: 48),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  profiles.isEmpty ? "None" : activeProfile!.name,
-                  style: const TextStyle(
-                    color: Color.fromARGB(255, 118, 118, 118),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24
-                  ),
-                ),
-              ),
-            )
           ],
         ),
       ),

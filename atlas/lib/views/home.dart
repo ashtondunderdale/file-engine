@@ -23,14 +23,25 @@ class Home extends StatelessWidget {
         title: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Dashboard",
-              style: TextStyle(
-                fontSize: 28, 
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 73, 73, 73),
-                letterSpacing: 1
-              ),
+            Row(
+              children: [
+                Text(
+                  "ATLAS",
+                  style: TextStyle(
+                    fontSize: 28, 
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 73, 73, 73),
+                    letterSpacing: 1
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 8),
+                  child: Icon(
+                    Icons.navigate_next,
+                    color: Colors.grey,
+                  ),
+                )
+              ],
             ),
             Padding(
               padding: EdgeInsets.only(left: 16),
@@ -48,7 +59,7 @@ class Home extends StatelessWidget {
       ),
       body: Row(
         children: [
-          NavigationPanel(),
+          const NavigationPanel(),
           Expanded(
             child: SizedBox(
               width: 200,

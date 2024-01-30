@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fluttergames/data.dart';
+import 'package:fluttergames/views/add_account.dart';
 import 'package:fluttergames/views/switch_profile.dart';
 
 import '../views/home.dart';
 
 class NavigationPanel extends StatelessWidget {
-  const NavigationPanel({Key? key});
+  const NavigationPanel({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,10 @@ class NavigationPanel extends StatelessWidget {
                 size: 32,
               ),
               onPressed: () {
-            
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddAccount()),
+                );
               },
             ),
           ),
