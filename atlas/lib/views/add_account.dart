@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttergames/data.dart';
 import 'package:fluttergames/models/account.dart';
 import 'package:fluttergames/widgets/navigation_panel.dart';
+import 'package:intl/intl.dart';
 
 class AddAccount extends StatefulWidget {
   AddAccount({super.key});
@@ -163,6 +164,7 @@ class _AddAccountState extends State<AddAccount> {
                             amount: double.tryParse(amountController.text) ?? 0.0,
                             date: DateTime.now(), 
                             isIncome: isIncome,
+                            month: DateFormat('MMMM').format(DateTime.now())
                           );
 
                           if (isIncome) {

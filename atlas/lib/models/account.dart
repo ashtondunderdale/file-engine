@@ -7,5 +7,7 @@ class Account {
   DateTime date;
   bool isIncome;
 
-  Account({required this.title, required this.type, required this.amount, required this.date, required this.isIncome});
+  String month;
+
+  Account({required this.title, required this.type, required this.amount, required this.date, required this.isIncome, required this.month});
 }
