@@ -1,6 +1,6 @@
 class Bar {
-  final int x;
-  final int y;
+  final double x;
+  final double y;
 
   Bar({required this.x, required this.y});
 }
