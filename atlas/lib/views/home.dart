@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttergames/widgets/account_history.dart';
+import 'package:fluttergames/widgets/month_history.dart';
 import 'package:fluttergames/widgets/navigation_panel.dart';
 
 import '../models/profile.dart';
@@ -64,12 +65,16 @@ class Home extends StatelessWidget {
             child: SizedBox(
               width: 200,
               height: MediaQuery.of(context).size.height,
-              child: const Padding(
-                padding: EdgeInsets.only(bottom: 200),
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 200),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    AccountHistory()
+                    Padding(
+                      padding: const EdgeInsets.only(left: 32, right: 32),
+                      child: MonthHistory(),
+                    ),
+                    const AccountHistory()
                   ],
                 ),
               ),

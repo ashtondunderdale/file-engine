@@ -4,6 +4,8 @@ import 'package:fluttergames/models/account.dart';
 import 'package:fluttergames/widgets/navigation_panel.dart';
 import 'package:intl/intl.dart';
 
+import 'home.dart';
+
 class AddAccount extends StatefulWidget {
   AddAccount({super.key});
 
@@ -159,24 +161,32 @@ class _AddAccountState extends State<AddAccount> {
                       padding: const EdgeInsets.only(top: 48, left: 8),
                       child: TextButton(
                         onPressed: () {
-                          Account account = Account(title: titleController.text, 
-                            type: selectedType, 
-                            amount: double.tryParse(amountController.text) ?? 0.0,
-                            date: DateTime.now(), 
-                            isIncome: isIncome,
-                            month: DateFormat('MMMM').format(DateTime.now())
-                          );
+                          if (amountController.text.isNotEmpty && titleController.text.isNotEmpty) {
+                            Account account = Account(
+                              title: titleController.text, 
+                              type: selectedType == "Select Type" ? "GENERAL" : selectedType, 
+                              amount: double.tryParse(amountController.text) ?? 0.0,
+                              date: DateTime.now(), 
+                              isIncome: isIncome,
+                              month: DateFormat('MMMM').format(DateTime.now())
+                            );
 
-                          if (isIncome) {
-                            activeProfile!.balance += double.tryParse(amountController.text) ?? 0.0;
+                            if (isIncome) {
+                              activeProfile!.balance += double.tryParse(amountController.text) ?? 0.0;
+                            }
+                            else {
+                              activeProfile!.balance -= double.tryParse(amountController.text) ?? 0.0;
+                            }
+                        
+                            setState(() {
+                              activeProfile!.accounts.add(account);
+                            });
+
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) => Home(profile: activeProfile!,)),
+                            );
                           }
-                          else {
-                            activeProfile!.balance -= double.tryParse(amountController.text) ?? 0.0;
-                          }
-                      
-                          setState(() {
-                            activeProfile!.accounts.add(account);
-                          });
                         },
                         child: const Text( 
                         "Add Account",
