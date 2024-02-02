@@ -71,7 +71,7 @@ class Home extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 32, right: 32),
-                      child: Placeholder()
+                      child: Text("data"),
                     ),
                     const AccountHistory()
                   ],
