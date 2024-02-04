@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:fluttergames/data.dart';
 import 'package:fluttergames/models/account.dart';
+import 'package:fluttergames/services/database.dart';
 import 'package:fluttergames/widgets/navigation_panel.dart';
 import 'package:intl/intl.dart';
 
 import 'home.dart';
 
 class AddAccount extends StatefulWidget {
-  AddAccount({super.key});
+  const AddAccount({super.key});
 
   @override
   State<AddAccount> createState() => _AddAccountState();
@@ -18,9 +19,7 @@ class _AddAccountState extends State<AddAccount> {
 
   TextEditingController amountController = TextEditingController();
 
-  // Added variables for dropdown and checkbox
   String selectedType = 'Select Type';
-
   bool isIncome = false;
 
   @override
@@ -160,13 +159,13 @@ class _AddAccountState extends State<AddAccount> {
                     Padding(
                       padding: const EdgeInsets.only(top: 48, left: 8),
                       child: TextButton(
-                        onPressed: () {
+                        onPressed: () async {
                           if (amountController.text.isNotEmpty && titleController.text.isNotEmpty) {
                             Account account = Account(
                               title: titleController.text, 
                               type: selectedType == "Select Type" ? "GENERAL" : selectedType, 
                               amount: double.tryParse(amountController.text) ?? 0.0,
-                              date: DateTime.now(), 
+                              date: DateTime.now().toString(), 
                               isIncome: isIncome,
                               month: DateFormat('MMMM').format(DateTime.now())
                             );
@@ -177,7 +176,10 @@ class _AddAccountState extends State<AddAccount> {
                             else {
                               activeProfile!.balance -= double.tryParse(amountController.text) ?? 0.0;
                             }
-                        
+
+                            await DatabaseService.addAccountToProfile("testProfileID", account);
+                            await DatabaseService.saveProfileBalance(activeProfile!.balance);
+
                             setState(() {
                               activeProfile!.accounts.add(account);
                             });

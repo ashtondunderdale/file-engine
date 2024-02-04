@@ -2,7 +2,7 @@ class Account {
   String title;
   String type;
   double amount;
-  DateTime date;
+  String date;
   bool isIncome;
   String month;
 
@@ -14,15 +14,4 @@ class Account {
     required this.isIncome,
     required this.month,
   });
-
-  Map<String, dynamic> toMap() {
-    return {
-      'title': title,
-      'type': type,
-      'amount': amount,
-      'date': date,
-      'isIncome': isIncome,
-      'month': month,
-    };
-  }
 }

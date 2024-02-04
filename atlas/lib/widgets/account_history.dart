@@ -2,8 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:fluttergames/data.dart';
 import 'package:fluttergames/widgets/account_tile.dart';
 
-class AccountHistory extends StatelessWidget {
-  const AccountHistory({Key? key});
+import '../services/database.dart';
+
+class AccountHistory extends StatefulWidget {
+  const AccountHistory({super.key});
+
+  @override
+  State<AccountHistory> createState() => _AccountHistoryState();
+}
+
+class _AccountHistoryState extends State<AccountHistory> {
+
+  @override
+  void initState() {
+    initialiseAccounts();   
+    super.initState();
+  }
+
+  void initialiseAccounts() async {
+      await DatabaseService.loadActiveAccounts();
+      setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {

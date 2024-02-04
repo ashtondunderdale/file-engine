@@ -44,7 +44,7 @@ class NavigationPanel extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => AddAccount()),
+                  MaterialPageRoute(builder: (context) => const AddAccount()),
                 );
               },
             ),

@@ -1,15 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:fluttergames/data.dart';
+import 'package:fluttergames/services/database.dart';
 import 'package:fluttergames/widgets/account_history.dart';
 import 'package:fluttergames/widgets/navigation_panel.dart';
 
 import '../models/profile.dart';
 import '../widgets/profile_card.dart';
 
-
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   Home({super.key, required this.profile});
 
   Profile profile;
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+
+  @override
+  void initState() {
+    initialiseBalance();
+    setState(() {});
+    super.initState();
+  }
+
+  void initialiseBalance() async {
+
+    Profile? activeProfile = await DatabaseService.loadProfile("yourProfileId");
+
+    if (activeProfile != null) {
+      await DatabaseService.setActiveProfile(activeProfile);
+      print("Active profile set successfully.");
+    } else {
+      print("Failed to load profile.");
+    }
+
+    activeProfile!.balance = await DatabaseService.loadProfileBalance();
+    print(activeProfile!.balance);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,16 +93,16 @@ class Home extends StatelessWidget {
             child: SizedBox(
               width: 200,
               height: MediaQuery.of(context).size.height,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 200),
+              child: const Padding(
+                padding: EdgeInsets.only(bottom: 200),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 32, right: 32),
+                      padding: EdgeInsets.only(left: 32, right: 32),
                       child: Text("data"),
                     ),
-                    const AccountHistory()
+                    AccountHistory()
                   ],
                 ),
               ),
