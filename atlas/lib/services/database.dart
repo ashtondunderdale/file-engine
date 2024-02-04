@@ -119,6 +119,15 @@ class DatabaseService {
         final Map<String, dynamic> profileData =
             (documentSnapshot.data() as Map<String, dynamic>) ?? {};
 
+        profiles.add(
+          Profile(
+            name: profileData['name'] ?? "", 
+            balance: profileData['balance'] ?? 0.0, 
+            accountNumber: profileData['accountNumber'] ?? "", 
+            bank: profileData['bank'], 
+            accounts: [])
+        );
+
         return Profile(
           name: profileData['name'] ?? "",
           balance: profileData['balance'] ?? 0.0,

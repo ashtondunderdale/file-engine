@@ -22,17 +22,21 @@ class ProfileCard extends StatelessWidget {
         child: Row(
           children: [
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Padding(
                   padding: EdgeInsets.only(top: 16, right: 28),
                   child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text(
-                      "FUNDS",
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 10,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 16),
+                      child: Text(
+                        "FUNDS",
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10,
+                        ),
                       ),
                     ),
                   ),
@@ -69,7 +73,7 @@ class ProfileCard extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 110, left: 96),
+              padding: const EdgeInsets.only(bottom: 110, left: 72),
               child: Text(
                 activeProfile!.accountNumber,
                 style: const TextStyle(

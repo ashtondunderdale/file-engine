@@ -27,15 +27,6 @@ class _HomeState extends State<Home> {
 
   void initialiseBalance() async {
 
-    Profile? activeProfile = await DatabaseService.loadProfile("yourProfileId");
-
-    if (activeProfile != null) {
-      await DatabaseService.setActiveProfile(activeProfile);
-      print("Active profile set successfully.");
-    } else {
-      print("Failed to load profile.");
-    }
-
     activeProfile!.balance = await DatabaseService.loadProfileBalance();
     print(activeProfile!.balance);
   }
@@ -98,10 +89,6 @@ class _HomeState extends State<Home> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 32, right: 32),
-                      child: Text("data"),
-                    ),
                     AccountHistory()
                   ],
                 ),

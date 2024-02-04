@@ -32,8 +32,9 @@ class _AccountTileState extends State<AccountTile> {
                 width: 160,
                 child: Text(
                   widget.account.title,
-                  style: const TextStyle(
-                    color: Color.fromARGB(255, 102, 102, 102),
+                  style: TextStyle(
+                    color: widget.account.type == "Rent" ? const Color.fromARGB(255, 255, 130, 121) : 
+                          (widget.account.type == "Salary" ? const Color.fromARGB(255, 112, 170, 114) : Colors.grey)
                   ),
                 ),
               ),

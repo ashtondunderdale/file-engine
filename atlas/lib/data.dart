@@ -1,9 +1,7 @@
 import 'models/profile.dart';
 import 'services/database.dart';
 
-List<Profile> profiles = [
-  Profile(name: "Current", balance: 5625.49, accountNumber: "60290155", bank: "Santander", accounts: []),
-];
+List<Profile> profiles = [];
 
 Profile? activeProfile;
 
