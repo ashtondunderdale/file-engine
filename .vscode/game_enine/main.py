@@ -41,35 +41,46 @@ def run_engine():
 
     while True:
         previous_file_index = filename_index     
+        move_index = get_file_index_action()
 
-        index_to_update = update_file_index()
+        if (is_collision(move_index, filename_index)): continue
 
-        new_index = filename_index + index_to_update
-
-        # border edges when going left and right
-        if (index_to_update == -1 and filename_index % 10 == 0):
-            continue
-
-        if (index_to_update == 1 and str(filename_index)[-1] == '9'):
-            continue;
-
-        if (new_index < 0): continue
-
-        filename_index = max(0, min(99, new_index))
+        filename_index = max(0, min(99, filename_index + move_index))
         
-        old_filename = f"{previous_file_index:02d}.jpg"
-        new_filename = f"{filename_index:02d}.jpg"
-        
-        old_path = os.path.join(path, old_filename)
-        new_path = os.path.join(path, new_filename)
-        
-        if os.path.exists(old_path):
-            os.rename(old_path, new_path)
-            time.sleep(0.5)        
-            refresh_file_explorer(path)
+        move_file(previous_file_index, filename_index)
 
 
-def update_file_index():
+def move_file(previous_file_index, filename_index):
+    old_filename = f"{previous_file_index:02d}.jpg"
+    new_filename = f"{filename_index:02d}.jpg"
+    
+    old_path = os.path.join(path, old_filename)
+    new_path = os.path.join(path, new_filename)
+    
+    if not os.path.exists(old_path):
+        return
+    
+    os.rename(old_path, new_path)
+    time.sleep(0.5)        
+    refresh_file_explorer(path)
+
+
+def is_collision(move_index, filename_index):
+    if (move_index == -1 and filename_index % 10 == 0):
+        return True
+
+    if (move_index == 1 and str(filename_index)[-1] == '9'):
+        return True
+
+    new_index = filename_index + move_index
+
+    if (new_index < 0 or new_index > 99):         
+        return True
+    
+    return False
+
+
+def get_file_index_action():
     event = keyboard.read_event()
     key_pressed = event.name  
 
