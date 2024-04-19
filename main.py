@@ -1,7 +1,7 @@
 import os
 import ctypes
 
-from engine.engine import run_engine
+from engine import *
 
 #  for this program to work do the following:
 #
